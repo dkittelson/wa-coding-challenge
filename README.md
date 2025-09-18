@@ -1,15 +1,15 @@
-# Computer Vision Challenge: Ego-Trajectory & Bird’s-Eye View Mapping
+# Ego-Trajectory & Bird’s-Eye View Mapping Challenge
 
 ## Method
 
-The vehicle's path was calculated by inferring its motion from the movement of the traffic light. The process can be divided into three main stages:
+The vehicle's path was calculated by looking at its motion from the movement of the traffic light. We can divide this process up into three main steps:
 
-1.  **3D Feature Extraction**: The 3D position of the traffic light relative to the camera was determined for each video frame. To ensure an accurate result, a 5x5 pixel patch around the traffic light's bounding box center was extracted from the depth data. Invalid points were filtered out, and the remaining 3D coordinates were averaged.
+1.  **3D Feature Extraction**: The position of the traffic light relative to the camera was determined for each video frame. For more accuracy, a 5x5 pixel patch around the traffic light's bounding box center was extracted from the depth data. Invalid points were filtered out, and the remaining coordinates were averaged.
 
-2.  **Kinematic Velocity Calculation**: The vehicle's forward speed ($v_x$) and its turning rate ($\omega_z$) were calculated using a kinematic model based on the time derivatives of the light's measured 3D position ($X, Y$). The relevant equations are:
+2.  **Kinematic Velocity Calculation**: The vehicle's forward speed ($v_x$) and its turning rate ($\omega_z$) were calculated. The relevant equations are:
     $$\omega_z = -\frac{\dot{Y}}{X} \quad , \quad v_x = -\dot{X} + \omega_z Y$$
 
-3.  **Trajectory Integration**: The final path was then constructed by integrating these velocities over time. Starting from an initial position and heading defined by the first measurement, the vehicle's state was updated step-by-step using Euler integration to build the complete trajectory.
+3.  **Trajectory Integration**: The final path was then constructed by integrating these velocities over time. Starting from an initial position and heading defined by the first measurement, the vehicle's state was then updated step-by-step using Euler integration to build the complete trajectory.
 
 ## Assumptions
 
