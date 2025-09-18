@@ -20,8 +20,8 @@ The vehicle's path was calculated by looking at its movement relative to the tra
 
 ## Results
 
-The script generates a plot of the vehicle's trajectory, saved as `trajectory.png`.
+The script generates this png: 
 
 <img width="2531" height="708" alt="trajectory" src="https://github.com/user-attachments/assets/3da494ac-395c-491b-a326-ea6bc65eab6c" />
 
-The picture shows the vehicle starting on the right side of the frame and moving towards the traffic light (located at the origin). The curve in the path shows that the model detected the vehicle's rotation (turning) as it drove forward. The smoothness of the trajectory shows the effectiveness of the patch-averaging technique, as it reduced noise. 
+The png shows the vehicle starting on the right side of the frame and moving towards the traffic light (located at the origin). The curve in the path shows that the model detected the vehicle's rotation (turning) as it drove forward. Additionally, the smoothness of the trajectory shows how effective the patch-averaging technique is, as it reduced noise. 
