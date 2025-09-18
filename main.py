@@ -128,7 +128,7 @@ ax.plot(trajectory[0, 0], trajectory[0, 1], 'o', color='limegreen', markersize=1
 ax.plot(trajectory[-1, 0], trajectory[-1, 1], 's', color='gold', markersize=12, label='End')
 
 # Label + Title + Grid
-ax.set_title("Ego-Vehicle Trajectory (Bird's-Eye View)", fontsize=16, fontweight='bold')
+ax.set_title("Ego-Vehicle Trajectory", fontsize=16, fontweight='bold')
 ax.set_xlabel("X-position (m)", fontsize=12)
 ax.set_ylabel("Y-position (m)", fontsize=12)
 ax.grid(True)
