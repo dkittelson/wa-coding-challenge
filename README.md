@@ -2,7 +2,7 @@
 
 ## Method
 
-The vehicle's path was calculated by looking at its motion from the movement of the traffic light. We can divide this process up into three main steps:
+The vehicle's path was calculated by looking at its movement relative to the traffic light. We can divide this process up into three main steps:
 
 1.  **3D Feature Extraction**: The position of the traffic light relative to the camera was determined for each video frame. For more accuracy, a 5x5 pixel patch around the traffic light's bounding box center was extracted from the depth data. Invalid points were filtered out, and the remaining coordinates were averaged.
 
