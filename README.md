@@ -13,7 +13,7 @@ The vehicle's path was calculated by looking at its movement relative to the tra
 
 ## Assumptions
 
-* The **traffic light is perfectly static** and serves as a fixed point in the world.
+* The **traffic light is static**.
 * The vehicle moves on a **flat 2D plane**.
 * The vehicle cannot slip or move sideways.
 * The time interval between video frames is constant.
