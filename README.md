@@ -22,6 +22,6 @@ The vehicle's path was calculated by inferring its motion from the movement of t
 
 The script generates a plot of the vehicle's trajectory, saved as `trajectory.png`.
 
-!(trajectory.png)
+!(./trajectory.png)
 
 The picture shows the vehicle starting on the right side of the frame and moving towards the traffic light (located at the origin). The curve in the path shows that the model detected the vehicle's rotation (turning) as it drove forward. The smoothness of the trajectory shows the effectiveness of the patch-averaging technique, as it reduced noise. 
