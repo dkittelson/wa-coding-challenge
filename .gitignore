@@ -1,2 +1,4 @@
 dataset/
 __pycache__
+yolo11n.pt
+.git/

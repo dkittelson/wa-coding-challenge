@@ -1,27 +1,36 @@
-# Computer Vision Challenge: Ego-Trajectory & Bird’s-Eye View Mapping
+# WA Coding Challenge
 
 ## Method
 
-The vehicle's path was calculated by inferring its motion from the movement of the traffic light. The process can be divided into three main stages:
+### Ego-Trajectory Estimation
 
-1.  **3D Feature Extraction**: The 3D position of the traffic light relative to the camera was determined for each video frame. To ensure an accurate result, a 5x5 pixel patch around the traffic light's bounding box center was extracted from the depth data. Invalid points were filtered out, and the remaining 3D coordinates were averaged.
+The vehicle's path can be calculated by tracking the traffic light. A 5x5 pixel patch around the traffic light gives 3d positions from depth data, which then can be used to find the cars's forward velocity (v_x) and angular velocity (ω_z):
 
-2.  **Kinematic Velocity Calculation**: The vehicle's forward speed ($v_x$) and its turning rate ($\omega_z$) were calculated using a kinematic model based on the time derivatives of the light's measured 3D position ($X, Y$). The relevant equations are:
-    $$\omega_z = -\frac{\dot{Y}}{X} \quad , \quad v_x = -\dot{X} + \omega_z Y$$
+```
+ω_z = -dY/dt / X
+v_x = -dX/dt + ω_z * Y
+```
 
-3.  **Trajectory Integration**: The final path was then constructed by integrating these velocities over time. Starting from an initial position and heading defined by the first measurement, the vehicle's state was updated step-by-step using Euler integration to build the complete trajectory.
+The car path is built by integrating these numbers over time.
+
+### Detection
+
+- **YOLO Detection**: YOLOv11 detects and tracks people and vehicles with persistent object IDs (Though I could only map the golf cart and 1 barrel)
+- **Color Detection**: Color filtering allowed identification of orange barrels
+- **3D Coordinate Transformation**: The detections were transformed into 3d coordinate positions
 
 ## Assumptions
 
-* The **traffic light is perfectly static** and serves as a fixed point in the world.
-* The vehicle moves on a **flat 2D plane**.
-* The vehicle cannot slip or move sideways.
-* The time interval between video frames is constant.
+- Traffic light is static and serves as world reference
+- Vehicles move on a flat plane without slipping/rotating
+- Constant time between frames
 
 ## Results
 
-The script generates a plot of the vehicle's trajectory, saved as `trajectory.png`.
+The script generated a bird's-eye view plot (`bev.png`) showing:
 
-<img width="2531" height="708" alt="trajectory" src="https://github.com/user-attachments/assets/3da494ac-395c-491b-a326-ea6bc65eab6c" />
+- The car's trajectory
+- One barrel detected
+- Golf cart that is ahead of the car 
+- Traffic light at origin
 
-The picture shows the vehicle starting on the right side of the frame and moving towards the traffic light (located at the origin). The curve in the path shows that the model detected the vehicle's rotation (turning) as it drove forward. The smoothness of the trajectory shows the effectiveness of the patch-averaging technique, as it reduced noise. 
