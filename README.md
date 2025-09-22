@@ -29,8 +29,13 @@ The car path is built by integrating these numbers over time.
 
 The script generated a bird's-eye view plot (`bev.png`) showing:
 
+<img width="4174" height="2969" alt="bev" src="https://github.com/user-attachments/assets/56b0315a-be74-4ab3-9ec7-9cde2dbb235c" />
+
 - The car's trajectory
 - One barrel detected
 - Golf cart that is ahead of the car 
 - Traffic light at origin
+
+Although I didn't get all of the objects detected and plotted, I still learned a lot and had a fun time.
+Thanks!
 
